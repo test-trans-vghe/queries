@@ -1,4 +1,6 @@
 sudo: false
+build_image: drydock/u14pytpls:prod
+
 
 language: python
 python:
