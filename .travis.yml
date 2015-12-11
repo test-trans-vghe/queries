@@ -1,7 +1,5 @@
 sudo: false
-cache:
-  directories:
-    - $HOME/.pip-cache/
+
 language: python
 python:
   - 2.6
@@ -17,22 +15,3 @@ install:
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2 --download-cache $HOME/.pip-cache; fi
   - python setup.py develop
 script: nosetests
-after_success:
-  - codecov
-deploy:
-  distributions: sdist
-  provider: pypi
-  on:
-    python: 2.7
-    tags: true
-    all_branches: true
-  user: crad
-  password:
-    secure: UWQWui+QhAL1cz6oW/vqjEEp6/EPn1YOlItNJcWHNOO/WMMOlaTVYVUuXp+y+m52B+8PtYZZCTHwKCUKe97Grh291FLxgd0RJCawA40f4v1gmOFYLNKyZFBGfbC69/amxvGCcDvOPtpChHAlTIeokS5EQneVcAhXg2jXct0HTfI=
-notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/d96fcd17db66e06d833d
-    on_success: always
-    on_failure: always
-    on_start: always
